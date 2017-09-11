@@ -2,7 +2,7 @@
 layout: post
 title: "What is DevOps?"
 date: 2017-06-24
-excerpt: "At this point, \"DevOps\" might seem like a buzz word to some, but DevOps has real value. DevOps helps smooth over pain points in..."
+excerpt: "DEVOPS IS a set of principles that works to tear down..."
 tags: [devops, software, culturechangeishard]
 comments: true
 ---
