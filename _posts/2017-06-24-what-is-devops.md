@@ -2,7 +2,7 @@
 layout: post
 title: "What is DevOps?"
 date: 2017-06-24
-excerpt: "DEVOPS IS a set of principles that works to tear down..."
+excerpt: "DevOps unfortunately means many things to many people, so I'm going to try to nail down a meaning based on my experience and exposure."
 tags: [devops, software, culturechangeishard]
 comments: true
 ---
@@ -11,7 +11,7 @@ comments: true
 
 My name is Clinton Barr and I'm a software developer who has worked in DevOps. DevOps unfortunately means many things to many people, so I'm going to try to nail down a meaning based on my experience and exposure. I apologize in advance, because I'm going to say "DevOps" practically a million times. I wish there were a few synonyms for DevOps. Maybe I'll come up with a few.
 
-> **DEVOPS IS** a set of principles that works to tear down walls in a software organization and get people communicating.
+> _DevOps is a set of principles that works to tear down walls in a software organization and get people communicating._
 
 DevOps helps smooth over pain points in the [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle) of applications and services. It does this by focusing on the what and how. It aims to increase development velocity through improvement in communication, automation of process, and reducing blockers by enhancing team coordination.
 
