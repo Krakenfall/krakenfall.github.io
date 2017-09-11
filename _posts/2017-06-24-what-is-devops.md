@@ -7,9 +7,7 @@ tags: [devops, software, culturechangeishard]
 comments: true
 ---
 
-# [](#title-1)What is DevOps?
-
-My name is Clinton Barr and I'm a software developer who has worked in DevOps. DevOps unfortunately means many things to many people, so I'm going to try to nail down a meaning based on my experience and exposure. I apologize in advance, because I'm going to say "DevOps" practically a million times. I wish there were a few synonyms for DevOps. Maybe I'll come up with a few.
+My name is Clinton Barr and I'm a software developer who has worked in DevOps. Unfortunately, DevOps means many things to many people, so I'm going to try to nail down a meaning based on my experience and exposure. I apologize in advance, because I'm going to say "DevOps" practically a million times. I wish there were a few synonyms for DevOps. Maybe I'll come up with a few.
 
 > _DevOps is a set of principles that works to tear down walls in a software organization and get people communicating._
 
