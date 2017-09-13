@@ -14,7 +14,7 @@ My name is Clinton Barr and I'm a software developer who has worked in DevOps. U
 DevOps helps smooth over pain points in the [SDLC](https://en.wikipedia.org/wiki/Systems_development_life_cycle) of applications and services. It does this by focusing on the what and how. It aims to increase development velocity through improvement in communication, automation of process, and reducing blockers by enhancing team coordination.
 
 <p align="center">
-<img src="http://imgur.com/Qp1Mglu.gif" alt="Buster_Keaton_gif_almost_hit_by_train" style="display: block; margin: 0 auto;"><br>
+<img src="http://imgur.com/Qp1Mglu.gif" alt="Buster_Keaton_gif_almost_hit_by_train" style="display: block; margin: 0 auto;" height="225" width="300"><br>
 <sup>Let's avoid these kinds of situations, please</sup>
 </p>
 
@@ -70,7 +70,7 @@ I was at .NET Fringe 2017 this year and talked to a software engineer at a large
 
 I don't really agree with #1. If DevOps is a set of principles, then applying them will require change, which isn't likely to be catalyzed by creating a new position and filling it with a sysadmin. #2 will just waste money. I hope you don't find yourself under a manager like this. If you do, I hope they listen to their subject matter experts. #3 is what I encountered. One of the key points of DevOps is people over process. You need more than just improved communication in an organization, you need trust. What if that trust doesn't already exist? I realize this still isn't an optimal situation, but where I worked, my boss recognized the need to change how we do things and gave me the power to make those changes. It was awesome. The work I did directly contributed not only to my employer's trust in our development process, production hosting and recovery systems, but also the principles that DevOps represents. These are the same principles that a sufficiently mature company wouldn't have to utter the word "DevOps" to have in their operations. Some companies need a DevOps engineer. To echo the [words of Adam Jacob from Chef](https://www.youtube.com/watch?v=_DEToXsgrPc), DevOps is something that everyone can do. If you're committed to the continuous improvement of communication, process, and your company's product, you're doing DevOps too. It's rad.
 
-<p align="center"><img src="http://imgur.com/5iNEBAj.gif" alt="they_just_like_close_calls" style="display: block; margin: 0 auto;"></p>
+<p align="center"><img src="http://imgur.com/5iNEBAj.gif" alt="they_just_like_close_calls" style="display: block; margin: 0 auto;" height="227" width="300"></p>
 
 ## [](#resources-1)Resources
 Here are a few resources you can use to get started finding more about DevOps:
@@ -91,5 +91,5 @@ Here are a few resources you can use to get started finding more about DevOps:
 That's all I've got. Thanks for reading and I hope you decide to do some DevOps of your own!
 <br>
 
-<p align="center"><img src="http://imgur.com/APeZCFZ.gif" alt="they_just_like_close_calls" style="display: block; margin: 0 auto;"></p>
+<p align="center"><img src="http://imgur.com/APeZCFZ.gif" alt="they_just_like_close_calls" style="display: block; margin: 0 auto;" height="200" width="300"></p>
 
