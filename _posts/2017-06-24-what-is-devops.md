@@ -6,6 +6,7 @@ excerpt: "DevOps unfortunately means many things to many people, so I'm going to
 tags: [devops, software, culturechangeishard]
 comments: true
 ---
+*NOTICE: I've been lazy editing this post in GitHub, so please note it is unfinished*
 
 My name is Clinton Barr and I'm a software developer who has worked in DevOps. Unfortunately, DevOps means many things to many people, so I'm going to try to nail down a meaning based on my experience and exposure. I apologize in advance, because I'm going to say "DevOps" practically a million times. I wish there were a few synonyms for DevOps. Maybe I'll come up with a few.
 
@@ -31,9 +32,14 @@ Practically, for a software company, this includes, but is not limited to doing 
     *   Robust automated testing
     *   Automated code deployments
     *   Agile/Scrum Planning
-*   Automate every technical procedure within reason
+*   Automate every procedure within reason
     *   If the procedure needs to be done more than once, strongly consider automating it
     *   If the procedure is difficult to automate, figure out why – what part of your stack is causing this pain point? How can it be improved?
+    *   Treat the development of the automation as you would any app
+        * Will it have a positive return on investment?
+        * Make it maintainable!
+        * Follow separation of concerns/single purpose principle!
+        * Write tests!
 *   Create a robust monitoring system for production systems to answer these questions
     *   Is the application/service up?
     *   Is the application/service functional?
@@ -84,7 +90,7 @@ Here are a few resources you can use to get started finding more about DevOps:
 *   PluralSight: [Continuous Monitoring: The Big Picture](https://app.pluralsight.com/library/courses/continuous-monitoring-big-picture)
 *   PluralSight: [Implementing DevOps in the Real World](https://app.pluralsight.com/library/courses/implementing-devops-real-world)
     
-    *Note: If you don’t have PluralSight, I highly recommend using. It has a ton of great classes on software and best practices.*
+    *Note: If you don’t have PluralSight, I highly recommend using it. It has a ton of great classes on software and best practices.*
     
     <br>
     <br>
