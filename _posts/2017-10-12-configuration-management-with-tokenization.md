@@ -52,6 +52,15 @@ Once your transform files are added, there will be one sub-file per build config
 ## Creating Transform Rules
 
 
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="SuperImportKey" value="SOME PIG" />
+    <!-- More settings -->
+  </appSettings>
+</configuration>
+```
 
 ## Build
 
