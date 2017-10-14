@@ -83,7 +83,7 @@ What we need to do is create transform rules to fill the values of these keys an
 When I build in the Release build configuration and publish (since this is a web app), the transform rules will run and replace the values for `SuperImportantKey` and `SuperImportantConnectionString` with the tokens `__SuperImportantKeyVariableName__` and `__ConnectionStringVariableName__`.
 
 <p align="center">
-<img src="https://i.imgur.com/VX274v6.png" alt="web_config_transformed" style="display: block; margin: 0 auto;"><br>
+<img src="https://i.imgur.com/Dsr63zN.png" alt="web_config_transformed" style="display: block; margin: 0 auto;"><br>
 <sup> From the Web.config in the publish directory at bin/Release/PublishOutput </sup>
 </p>
 
@@ -93,7 +93,7 @@ This comes in handy during our deployment (or container build, staging for orche
 In VSTS, I'm going to create a new release that's linked to the build where I packaged the publish output from my project. I've installed the [Replace Tokens Extension](https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens), which will search through my build artifacts and replace the tokens with the release variables depending on the search pattern I provide. Add this task to the release in the first step and point it at the build artifacts:
 
 <p align="center">
-<img src="https://i.imgur.com/VX274v6.png" alt="release_with_replace_tokens" style="display: block; margin: 0 auto;"><br>
+<img src="https://i.imgur.com/eFe3QtW.png" alt="release_with_replace_tokens" style="display: block; margin: 0 auto;"><br>
 <sup> Notice the search pattern **/*.config </sup>
 </p>
 
@@ -102,7 +102,7 @@ Don't forget to expand the Advanced section and change the token prefixes and su
 Finally, add the variables and values to the release variables and you'll be all set.
 
 <p align="center">
-<img src="https://i.imgur.com/VX274v6.png" alt="add_variables_with_environment_values" style="display: block; margin: 0 auto;"><br>
+<img src="https://i.imgur.com/I8DgAQg.png" alt="add_variables_with_environment_values" style="display: block; margin: 0 auto;"><br>
 <sup> Enter the settings you need for the specified environment </sup>
 </p>
 
