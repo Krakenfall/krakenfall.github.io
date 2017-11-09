@@ -24,9 +24,8 @@ Most people I know that use git prefer to work with it in the command line, but 
 <sup> Cloning from GitHub in VS 2017 Community Edition </sup>
 </p>
 
-
 ## Create a New Web App
-Create a new Visual Studio project in your local git repo. For this, I'm creating a .NET MVC app using the default template. 
+Create a new Visual Studio project in your local git repo. For this, I'm creating a .NET MVC app called SuperBasicWebApp using the default template. 
 <p align="center">
 <img src="https://i.imgur.com/6xhK1ZW.png" alt="create_new_app" style="display: block; margin: 0 auto;" height="75%" width="75%"><br>
 </p>
@@ -80,6 +79,22 @@ Finally, let's save, build, and run it before committing to make sure everything
 </p>
 
 ## Push the App to GitHub
+Before we commit our app to remote, we need to add a gitignore for .NET apps. GitHub has a handy pre-made gitignore file for Visual Studio over at https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore. Make sure it's committed and pushed to remote before you try to commit your web app. I ran into an issue where committing the gitignore file locally with the web app unstaged caused it not to be recognized. I just ended up creating the gitignore in GitHub's online editor and pulling it locally, which caused it to be recognized by Visual Studio.
+
+Next, stage, commit, and push your app to GitHub. If you're using Visual Studio, go to View -> Team Explorer -> your repo -> Changes.
+
+<p align="center">
+<img src="https://i.imgur.com/zWU9JRC.png" alt="stage_and_commit" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
+</p>
+
+<p align="center">
+<img src="https://i.imgur.com/eo25NvQ.png" alt="commit_success" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
+</p>
+Click on Sync and push your changes to GitHub remote.
+
+<p align="center">
+<img src="https://i.imgur.com/axp028a.png" alt="sync_and_push" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
+</p>
 
 ## Create a Release Pipeline in VSTS
 
