@@ -11,4 +11,16 @@ I've been digging through some Azure services lately and found something I didn'
 
 ## Prerequisites
 
-For the proceeding
+For the proceeding steps, to follow along, you'll need a few things to start. I'm going going to create a new web app, push it to GitHub, create a build and deployment in VSTS, and publish the app to Azure App Service. For that, you'll need the following:
+* An Azure Subscription, trial or otherwise
+* A GitHub account
+* Access to a VSTS account
+* Visual Studio 2017 Community Edition or higher (2015 versions will probably work)
+
+## Create a New Web App
+
+## Push the App to GitHub
+
+## Create a Release Pipeline in VSTS
+
+## Publish to Azure App Service
