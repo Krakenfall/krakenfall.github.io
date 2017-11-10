@@ -13,8 +13,9 @@ I've been digging through some Azure services lately and found something I didn'
 
 For the proceeding steps, to follow along, you'll need a few things to start. I'm going going to create a new web app, push it to GitHub, create a build and deployment in VSTS, and publish the app to Azure App Service. For that, you'll need the following:
 * An Azure Subscription, trial or otherwise
-* A GitHub repo, checked out locally 
-* Access to a VSTS account
+* A GitHub account with a personal access token 
+* A GitHub repo, checked out locally
+* Build and release administration access in a VSTS project
 * Visual Studio 2017 Community Edition or higher (2015 versions should work)
 
 Most people I know that use git prefer to work with it in the command line, but if you're up for trying something new, VS2017 integration with GitHub is really nice and allows you to clone, commit, and push code from inside Visual Studio. I'll be using it here.
@@ -79,7 +80,7 @@ Finally, let's save, build, and run it before committing to make sure everything
 </p>
 
 ## Push the App to GitHub
-Before we commit our app to remote, we need to add a gitignore for .NET apps. GitHub has a handy pre-made gitignore file for Visual Studio over at https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore. Make sure it's committed and pushed to remote before you try to commit your web app. I ran into an issue where committing the gitignore file locally with the web app unstaged caused it not to be recognized. I just ended up creating the gitignore in GitHub's online editor and pulling it locally, which caused it to be recognized by Visual Studio.
+Before we commit our app to remote, we need to add a gitignore for .NET apps. GitHub has a handy pre-made gitignore file for Visual Studio over at [https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore](https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore). Make sure it's committed and pushed to remote before you try to commit your web app. I ran into an issue where committing the gitignore file locally with the web app unstaged caused it not to be recognized. I just ended up creating the gitignore in GitHub's online editor and pulling it locally, which caused it to be recognized by Visual Studio.
 
 Next, stage, commit, and push your app to GitHub. If you're using Visual Studio, go to View -> Team Explorer -> your repo -> Changes.
 
@@ -95,8 +96,54 @@ Click on Sync and push your changes to GitHub remote.
 <p align="center">
 <img src="https://i.imgur.com/axp028a.png" alt="sync_and_push" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
 </p>
+<p align="center">
+<img src="https://i.imgur.com/khifxxW.png" alt="push_success" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
+</p>
 
-## Create a Release Pipeline in VSTS
+## Create a Build in VSTS
+Now, we're going to set up a build and release of SuperBasicWebApp in VSTS. I create the "Continuous Delivery Demo" project in my personal VSTS. Navigate over to the Builds section of the project and create a new build. To keep this simple, I'm going to use the template called "ASP.NET Core (.NET Framework)" to get started. I don't know why it has "Core" in there, but it should work.
+
+<p align="center">
+<img src="https://i.imgur.com/oemSAjT.png" alt="use_asp_net_template" style="display: block; margin: 0 auto;" height="75%" width="75%"><br>
+<sup> Searching for "ASP.NET" should bring up the right template </sup>
+</p>
+
+Apply the template. You should now have a set of build tasks, including running tests, in your build definition (which is what we're creating here, if you're unfamiliar with VSTS). Click on "Process" and both name and choose "Hosted" in the agent queue drop-down on the right. You can delete the existing ugly name - let's go for simplicity for now.
+
+<p align="center">
+<img src="https://i.imgur.com/2X2ugbU.png" alt="name_and_choose_agent" style="display: block; margin: 0 auto;" height="75%" width="75%"><br>
+</p>
+
+
+Next, we need to give VSTS access to checkout SuperBasicWebApp. Click on "Get Sources" and choose GitHub. Click on "Use GitHub personal access token to authorize" and enter your personal access token I mentioned in the prerequisites.
+
+<p align="center">
+<img src="https://i.imgur.com/qEbypgb.png" alt="set_sources" style="display: block; margin: 0 auto;" height="75%" width="75%"><br>
+</p>
+<p align="center">
+<img src="https://i.imgur.com/MPBHaUw.png" alt="enter_pat" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
+</p>
+
+If you don't know how to get a personal access token, sign into your GitHub account and navigate to  Profile -> Settings -> Developer Settings -> Personal Access Tokens. If you're wondering what permissions to give the token, I just gave mine notifications and repo permissions.
+<p align="center">
+<img src="https://i.imgur.com/me4BoWv.png" alt="github_pat" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+Once you enter the personal access token, you should be able to select your repo and branch for this build. Also, as a best practice, change "Clean" to true and "Clean options" to "All build directories." Always build with a clean workspace to ensure that what you ship is exactly what's in your source control at build time (or what's in the commit). Persistence build workspaces are a bad idea.
+<p align="center">
+<img src="https://i.imgur.com/Ucc23A8.png" alt="clean_workspace" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+The last order of business is to specify the solution file to build in the "Build solution" task. The default is a recursive minimatch pattern that will build all \*.sln files found in your repo. We'll put in the solution file's path relative to the root of the repo. Unlink the "Build solution" task and click on the chain link symbol to unlink the build from the packages.config file. This is a relatively new feature of VSTS which I haven't explored yet, but I do know that the minimatch pattern will build all solutions in the repo.
+<p align="center">
+<img src="https://i.imgur.com/RHgHNDP.png" alt="change_build_solution" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+Instead, click on the ellipses (...) that appears after unlinking and navigate to your solution file in the navigation window that pops up. Choose it and click OK.
+<p align="center">
+<img src="https://i.imgur.com/3DAr4Kr.png" alt="choose_solution" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+In the MSBuild Arguments field of the "Build solution" task, remove the last argument, ` /p:DeployIisAppPath="Default Web Site"`. We don't need this. Azure App Service uses web deploy packages to deploy ASP.NET apps. The default parameters here are for building a web deploy package, but the last part is not needed for Azure App Service.
 
 ## Publish to Azure App Service
 
