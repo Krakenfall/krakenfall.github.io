@@ -101,7 +101,7 @@ Click on Sync and push your changes to GitHub remote.
 </p>
 
 ## Create a Build in VSTS
-Now, we're going to set up a build and release of SuperBasicWebApp in VSTS. I create the "Continuous Delivery Demo" project in my personal VSTS. Navigate over to the Builds section of the project and create a new build. To keep this simple, I'm going to use the template called "ASP.NET Core (.NET Framework)" to get started. I don't know why it has "Core" in there, but it should work.
+Now, we're going to set up a build and release of SuperBasicWebApp in VSTS. I created the "Continuous Delivery Demo" project in my personal VSTS. Navigate over to the Builds section of the project and create a new build. To keep this simple, I'm going to use the template called "ASP.NET Core (.NET Framework)" to get started. I don't know why it has "Core" in there, but it should work.
 
 <p align="center">
 <img src="https://i.imgur.com/oemSAjT.png" alt="use_asp_net_template" style="display: block; margin: 0 auto;" height="75%" width="75%"><br>
@@ -145,6 +145,45 @@ Instead, click on the ellipses (...) that appears after unlinking and navigate t
 
 In the MSBuild Arguments field of the "Build solution" task, remove the last argument, ` /p:DeployIisAppPath="Default Web Site"`. We don't need this. Azure App Service uses web deploy packages to deploy ASP.NET apps. The default parameters here are for building a web deploy package, but the last part is not needed for Azure App Service.
 
+Save and queue the build.
+<p align="center">
+<img src="https://i.imgur.com/5llIgsS.png" alt="build_success" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+## Create a Release in VSTS
+Head on over to "Releases" and create a new release. Again for simplicity, we'll use the Azure App Service template, which should be near the top of suggestions:
+<p align="center">
+<img src="https://i.imgur.com/Ae2iUdd.png" alt="use_app_service_template" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+When you apply the template, rename the the environment name to something useful. For instance, I named mine "Development", in case I wanted to clone and make "Test" and "Production" environments.
+<p align="center">
+<img src="https://i.imgur.com/RrBMa74.png" alt="rename_environment" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+Next, click on the warning just under the "Tasks" psuedo-tab, which should read "Some settings need attention". This will prompt you to link your Azure subscription to the Release. If you have not yet linked your Azure sub, click on "Manage" and follow the prompts. Select the Azure subscription when you finish linking it, authorize it, and proceed below.
+
+The next field asks for an App service name, but we don't have one, yet. Now is the time to head over to the Azure Portal and create an app service. Navigate to the [App Service page](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Web%2Fsites) in the Azure Portal and click on the plus sign. Choose "Web App" for the type, which you may have to search for. Click create on the next blade.
+
+<p align="center">
+<img src="https://i.imgur.com/L0e2kp9.png" alt="add_app_service" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+Fill in the details for your app. I recommend creating a resource group to use with all Azure resources related to your app or the environment (e.g. dev) so you can better manage/delete those resources. 
+<p align="center">
+<img src="https://i.imgur.com/Buf6w5C.png" alt="create_web_app" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
+You may need to create a new App Service Plan to continue. I created a quick service plan that's hosted in Central US and uses the Free Tier, which allows for 60min CPU time a day, for demonstration purposes. For more information and specifications for the various pricing tiers, refer to [Azure's pricing page](https://azure.microsoft.com/en-us/pricing/details/app-service/).
+
+Create the app service and continue. The deployment of the app service may take a minute, but once it's finished, you can return to the release in VSTS, click the refresh button, and select your new app service.
+<p align="center">
+<img src="https://i.imgur.com/Buf6w5C.png" alt="select_app_service" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+Save the release.
+
 ## Publish to Azure App Service
+<p align="center">
+<img src="https://i.imgur.com/Riri1IS.png" alt="create_new_release" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
 
 ## Update and Deploy
