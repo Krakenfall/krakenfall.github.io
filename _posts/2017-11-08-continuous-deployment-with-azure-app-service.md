@@ -2,7 +2,7 @@
 layout: post
 title: "Continous Deployment with Azure App Service"
 date: 2017-11-08
-excerpt: ""
+excerpt: "With Azure App Service, CI/CD is surprisingly easy to achieve. I'm going to quickly create a CD pipeline with git, Azure App Service, and VSTS."
 tags: [devops, visual studio team services, team foundation server, vsts, tfs, continuous delivery, visual studio, azure, app service, azure app service]
 comments: true
 ---
