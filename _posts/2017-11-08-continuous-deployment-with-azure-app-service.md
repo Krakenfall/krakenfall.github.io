@@ -208,12 +208,14 @@ If you go back to the Releases page, you can select your build and see the histo
 <p align="center">
 <img src="https://i.imgur.com/nshNkoV.png" alt="release_page" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
 </p>
-Double click on that and you can see the details of the release. Click on Logs and you can watch the stdout of release tasks while they're running. Once the release finishes, you're done! I can now navigate to [http://superbasicwebapp.azurewebsites.net](http://superbasicwebapp.azurewebsites.net) and viola! The site is up and running in Azure app service.
+Double click on that and you can see the details of the release. Click on Logs and you can watch the stdout of release tasks while they're running. Once the release finishes, you're done! I can now navigate to [http://superbasicwebapp.azurewebsites.net](http://superbasicwebapp.azurewebsites.net) and viola! The site is up and running in Azure app service. Keep in mind that the latter link will not be live for you, since this stuff costs money and I shut it down. For your app, navigate to `http://{name_of_your_app_service}.azurewebsites.net` to view your new CI/CD app.
 
 ## Update and Deploy
 Since we set up CI triggers on both the build and release, when we commit to origin/master next, our app will automatically build and deploy to Azure App Service! Pretty cool!
 
 From here, I would highly recommend setting up branch protection on your master branch, e.g. only allowing code merges through reviewed pull requests and developing through feature branches. I would also recommend using App Insights to monitor your website for availability. Finally, remember that robust testing is critical to this process. If you don't have good testing, then you can quickly shoot yourself in the foot with CI/CD. Instead of providing value faster to your customers, you will instead erode your customers' trust in your product, which is incredibly difficult to come back from. Rather, CI/CD is a better way to remove the heartache from any SDLC and get to the heart of software development - developing!
+
+There are, of course, limitations to the app service model. The service levels Azure provides are on a single machine basis, so this hosting solution is the equivalent of running one server for whatever site. Spikes in traffic may demand more than your service tier can provide. Larger volumes of traffic demand a distributed approach, such as load balanced server groups and clustered container services. Azure App Service seems to be a nice solution for a smaller scale, like for small businesses and limited utility apps. 
 
 I hope this post was useful to you. Let me know down in the comments if you have any pointers or questions. I did perform the steps in the guide as I was writing it, but I shotgunned this post, so I'm sure there's a mistake or two.
 
