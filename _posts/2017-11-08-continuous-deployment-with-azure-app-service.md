@@ -176,6 +176,10 @@ Click on the circle at the top right corner of the artifact box and enable the c
 
 Next, click on the warning just under the "Tasks" psuedo-tab, which should read "Some settings need attention". This will prompt you to link your Azure subscription to the Release. If you have not yet linked your Azure sub, click on "Manage" and follow the prompts. Select the Azure subscription when you finish linking it, authorize it, and proceed below.
 
+<p align="center">
+<img src="https://i.imgur.com/ldJMAiw.png" alt="link_azure_sub" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
 The next field asks for an App service name, but we don't have one, yet. Now is the time to head over to the Azure Portal and create an app service. Navigate to the [App Service page](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Web%2Fsites) in the Azure Portal and click on the plus sign. Choose "Web App" for the type, which you may have to search for. Click create on the next blade.
 
 <p align="center">
@@ -209,8 +213,8 @@ Double click on that and you can see the details of the release. Click on Logs a
 ## Update and Deploy
 Since we set up CI triggers on both the build and release, when we commit to origin/master next, our app will automatically build and deploy to Azure App Service! Pretty cool!
 
-From here, I would highly recommend setting up branch protection on your master branch, such as only allowing code merges through reviewed pull requests and developing through feature branches. I would also recommend using App Insights to monitor your website for availability. Finally, remember that robust testing is critical to this process. If you don't have good testing, then you can quickly shoot yourself in the foot with CI/CD. Instead of providing value faster to your customers, you will instead erode your customers' trust in your product, which is incredibly difficult to come back from. Rather, CI/CD is a better way to remove the heartache from any SDLC and get the heart of development - developing!
+From here, I would highly recommend setting up branch protection on your master branch, e.g. only allowing code merges through reviewed pull requests and developing through feature branches. I would also recommend using App Insights to monitor your website for availability. Finally, remember that robust testing is critical to this process. If you don't have good testing, then you can quickly shoot yourself in the foot with CI/CD. Instead of providing value faster to your customers, you will instead erode your customers' trust in your product, which is incredibly difficult to come back from. Rather, CI/CD is a better way to remove the heartache from any SDLC and get to the heart of software development - developing!
 
-I hope this post was useful to you. Let me know down in the comments if you have any pointers or questions. I did follow the guide as I was writing it, but I shotgunned this post, so I'm sure there's a mistake or two.
+I hope this post was useful to you. Let me know down in the comments if you have any pointers or questions. I did perform the steps in the guide as I was writing it, but I shotgunned this post, so I'm sure there's a mistake or two.
 
 Thanks for reading and have a great year!
