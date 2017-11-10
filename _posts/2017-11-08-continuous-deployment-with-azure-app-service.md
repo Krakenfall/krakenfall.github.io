@@ -134,6 +134,11 @@ Once you enter the personal access token, you should be able to select your repo
 <img src="https://i.imgur.com/Ucc23A8.png" alt="clean_workspace" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
 </p>
 
+Click on the Triggers psuedo-tab and enable Continuous Integration, which will trigger a build whenever changes are pushed to origin/master. 
+<p align="center">
+<img src="https://i.imgur.com/y6GoAtF.png" alt="ci_trigger" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
 The last order of business is to specify the solution file to build in the "Build solution" task. The default is a recursive minimatch pattern that will build all \*.sln files found in your repo. We'll put in the solution file's path relative to the root of the repo. Unlink the "Build solution" task and click on the chain link symbol to unlink the build from the packages.config file. This is a relatively new feature of VSTS which I haven't explored yet, but I do know that the minimatch pattern will build all solutions in the repo.
 <p align="center">
 <img src="https://i.imgur.com/RHgHNDP.png" alt="change_build_solution" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
@@ -160,6 +165,15 @@ When you apply the template, rename the the environment name to something useful
 <img src="https://i.imgur.com/RrBMa74.png" alt="rename_environment" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
 </p>
 
+Click on the "Add artifact" box and choose the build we set up earlier.
+<p align="center">
+<img src="https://i.imgur.com/fmuXBPe.png" alt="add_artifact" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+Click on the circle at the top right corner of the artifact box and enable the continuous deployment trigger.
+<p align="center">
+<img src="https://i.imgur.com/8VMpmKVg.png" alt="ci_release_trigger" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+
 Next, click on the warning just under the "Tasks" psuedo-tab, which should read "Some settings need attention". This will prompt you to link your Azure subscription to the Release. If you have not yet linked your Azure sub, click on "Manage" and follow the prompts. Select the Azure subscription when you finish linking it, authorize it, and proceed below.
 
 The next field asks for an App service name, but we don't have one, yet. Now is the time to head over to the Azure Portal and create an app service. Navigate to the [App Service page](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Web%2Fsites) in the Azure Portal and click on the plus sign. Choose "Web App" for the type, which you may have to search for. Click create on the next blade.
@@ -182,8 +196,21 @@ Create the app service and continue. The deployment of the app service may take 
 Save the release.
 
 ## Publish to Azure App Service
+Now to the good stuff! Queue a new release and watch it go.
 <p align="center">
 <img src="https://i.imgur.com/Riri1IS.png" alt="create_new_release" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
 </p>
+If you go back to the Releases page, you can select your build and see the history of releases.
+<p align="center">
+<img src="https://i.imgur.com/nshNkoV.png" alt="release_page" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+</p>
+Double click on that and you can see the details of the release. Click on Logs and you can watch the stdout of release tasks while they're running. Once the release finishes, you're done! I can now navigate to [http://superbasicwebapp.azurewebsites.net](http://superbasicwebapp.azurewebsites.net) and viola! The site is up and running in Azure app service.
 
 ## Update and Deploy
+Since we set up CI triggers on both the build and release, when we commit to origin/master next, our app will automatically build and deploy to Azure App Service! Pretty cool!
+
+From here, I would highly recommend setting up branch protection on your master branch, such as only allowing code merges through reviewed pull requests and developing through feature branches. I would also recommend using App Insights to monitor your website for availability. Finally, remember that robust testing is critical to this process. If you don't have good testing, then you can quickly shoot yourself in the foot with CI/CD. Instead of providing value faster to your customers, you will instead erode your customers' trust in your product, which is incredibly difficult to come back from. Rather, CI/CD is a better way to remove the heartache from any SDLC and get the heart of development - developing!
+
+I hope this post was useful to you. Let me know down in the comments if you have any pointers or questions. I did follow the guide as I was writing it, but I shotgunned this post, so I'm sure there's a mistake or two.
+
+Thanks for reading and have a great year!
