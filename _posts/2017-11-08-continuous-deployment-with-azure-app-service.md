@@ -188,7 +188,7 @@ The next field asks for an App service name, but we don't have one, yet. Now is 
 
 Fill in the details for your app. I recommend creating a resource group to use with all Azure resources related to your app or the environment (e.g. dev) so you can better manage/delete those resources. 
 <p align="center">
-<img src="https://i.imgur.com/Buf6w5C.png" alt="create_web_app" style="display: block; margin: 0 auto;" height="60%" width="60%"><br>
+<img src="https://i.imgur.com/e9USRkK.png" alt="create_web_app" style="display: block; margin: 0 auto;" height="40%" width="40%"><br>
 </p>
 
 You may need to create a new App Service Plan to continue. I created a quick service plan that's hosted in Central US and uses the Free Tier, which allows for 60min CPU time a day, for demonstration purposes. For more information and specifications for the various pricing tiers, refer to [Azure's pricing page](https://azure.microsoft.com/en-us/pricing/details/app-service/).
